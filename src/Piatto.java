@@ -11,14 +11,12 @@ public class Piatto {
                 wait();
                 System.out.println("il piatto è pieno per produrre altri bocconi");
             }
-        }
-        catch (InterruptedException e){
-            throw new RuntimeException(e);
-        }
-        finally {
             listaBocconi.add(i);
             notifyAll();
             System.out.println("Un boccone è stato inserito nel piatto: " +listaBocconi.size() + " all'interno del piatto ");
+        }
+        catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -29,15 +27,11 @@ public class Piatto {
                 wait();
                 System.out.println("Il piatto è vuoto :<");
             }
-        }catch (InterruptedException e){
-            throw new RuntimeException(e);
-        }
-        finally{
             listaBocconi.remove(listaBocconi.size()-1);
             notifyAll();
-            System.out.println("Sto prendneo un boccone dal piatto");
+            System.out.println("Sto prendendo un boccone dal piatto :)) ");
+        }catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
-
-
 }
